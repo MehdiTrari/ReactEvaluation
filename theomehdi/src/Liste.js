@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importer useNavigate pour la navigation
 import './Liste.css';
+import Panier from "./Panier";
 
 const Liste = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState(""); // Si tu souhaites ajouter un filtre plus tard
+  const [filter, setFilter] = useState("");
+  const navigate = useNavigate(); // Hook pour la navigation
 
-  // Fetch des produits mockés depuis MSW
   useEffect(() => {
     async function fetchData() {
       try {
@@ -22,6 +24,18 @@ const Liste = () => {
     }
     fetchData();
   }, []);
+
+  const handleViewDetails = (id) => {
+    navigate(`/product/${id}`); // Redirection vers la page des détails du produit avec l'ID
+  };
+
+  const handleAddToCart = (product) => {
+    console.log('Produit ajouté au panier:', product);
+    // Logique pour ajouter le produit au panier ici
+
+    // Redirection vers la page du panier
+    navigate('/panier');
+  };
 
   return (
     <div>
@@ -39,8 +53,8 @@ const Liste = () => {
                 <p>{product.price} €</p>
                 <p>{product.gender}</p>
                 <p>{product.description.substring(0, 100)}...</p>
-                <button onClick={() => console.log('Voir détails')}>Voir Détails</button>
-                <button onClick={() => console.log('Ajouter au panier')}>Ajouter au Panier</button>
+                <button onClick={() => handleViewDetails(product.id)}>Voir Détails</button>
+                <button onClick={() => handleAddToCart(product)}>Ajouter au Panier</button>
               </div>
             ))}
         </div>

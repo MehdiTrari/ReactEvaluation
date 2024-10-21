@@ -66,6 +66,8 @@ body {
     border-radius: 4px;
     padding: 10px 15px;
     margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
