@@ -1,43 +1,42 @@
 [
-    {
-      "id": 1,
-      "name": "Sneakers Classiques",
-      "price": 79.99,
-      "gender": "Unisexe",
-      "description": "Des sneakers confortables au design intemporel, parfaits pour un usage quotidien.",
-      "image": "chaussure.png"
-    },
-    {
-      "id": 2,
-      "name": "Baskets Sport",
-      "price": 99.99,
-      "gender": "Homme",
-      "description": "Chaussures de sport légères avec un excellent maintien et une adhérence parfaite.",
-      "image": "chaussure.png"
-    },
-    {
-      "id": 3,
-      "name": "Sandales Été",
-      "price": 49.99,
-      "gender": "Femme",
-      "description": "Sandales légères et aérées pour des journées chaudes. Confort garanti.",
-      "image": "chaussure.png"
-    },
-    {
-      "id": 4,
-      "name": "Bottes d'Hiver",
-      "price": 129.99,
-      "gender": "Femme",
-      "description": "Bottes imperméables et chaudes pour affronter l'hiver avec style.",
-      "image": "chaussure.png"
-    },
-    {
-      "id": 5,
-      "name": "Chaussures en Cuir",
-      "price": 149.99,
-      "gender": "Homme",
-      "description": "Chaussures en cuir élégantes et durables pour un look professionnel.",
-      "image": "chaussure.png"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Sneakers Classiques",
+    "price": 79.99,
+    "gender": "Unisexe",
+    "description": "Des sneakers confortables au design intemporel, parfaits pour un usage quotidien.",
+    "image": "sneakers.png"
+  },
+  {
+    "id": 2,
+    "name": "Baskets Sport",
+    "price": 99.99,
+    "gender": "Homme",
+    "description": "Chaussures de sport légères avec un excellent maintien et une adhérence parfaite.",
+    "image": "sneakers.png"
+  },
+  {
+    "id": 3,
+    "name": "Sandales Été",
+    "price": 49.99,
+    "gender": "Femme",
+    "description": "Sandales légères et aérées pour des journées chaudes. Confort garanti.",
+    "image": "sneakers.png"
+  },
+  {
+    "id": 4,
+    "name": "Bottes d'Hiver",
+    "price": 129.99,
+    "gender": "Femme",
+    "description": "Bottes imperméables et chaudes pour affronter l'hiver avec style.",
+    "image": "sneakers.png"
+  },
+  {
+    "id": 5,
+    "name": "Chaussures en Cuir",
+    "price": 149.99,
+    "gender": "Homme",
+    "description": "Chaussures en cuir élégantes et durables pour un look professionnel.",
+    "image": "sneakers.png"
+  }
+]

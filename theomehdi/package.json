@@ -39,5 +39,10 @@
   },
   "devDependencies": {
     "msw": "^2.4.11"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

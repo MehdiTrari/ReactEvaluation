@@ -1,39 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import './Liste.css'; // Import du fichier CSS
+import React, { useEffect, useState } from "react";
+import './Liste.css';
 
-
-// Composant Liste
-function Liste() {
-  // État local pour les produits
+const Liste = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState(""); // Si tu souhaites ajouter un filtre plus tard
 
-  // Simulation de récupération des produits (Mock)
+  // Fetch des produits mockés depuis MSW
   useEffect(() => {
-    // Appelle les données mockées (en attendant l'intégration de MSW)
-    fetch('/api/products') // Chemin de l'API mockée
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error('Erreur lors de la récupération des produits:', error));
+    async function fetchData() {
+      try {
+        const res = await fetch("/api/products");
+        if (!res.ok) {
+          throw new Error("Erreur lors de la récupération des produits.");
+        }
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    fetchData();
   }, []);
 
   return (
     <div>
       <h1>Liste des Chaussures</h1>
-      <div className="product-list">
-        {products.map((product) => (
-          <div key={product.id} className="product-item">
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>{product.price} €</p>
-            <p>{product.gender}</p>
-            <p>{product.description.substring(0, 100)}...</p>
-            <button onClick={() => console.log('Voir détails')}>Voir Détails</button>
-            <button onClick={() => console.log('Ajouter au panier')}>Ajouter au Panier</button>
-          </div>
-        ))}
-      </div>
+      {error ? (
+        <h3>{error}</h3>
+      ) : products.length > 0 ? (
+        <div className="product-list">
+          {products
+            .filter((product) => product.name.toLowerCase().includes(filter.toLowerCase()))
+            .map((product) => (
+              <div key={product.id} className="product-item">
+                <img src={product.image} alt={product.name} />
+                <h2>{product.name}</h2>
+                <p>{product.price} €</p>
+                <p>{product.gender}</p>
+                <p>{product.description.substring(0, 100)}...</p>
+                <button onClick={() => console.log('Voir détails')}>Voir Détails</button>
+                <button onClick={() => console.log('Ajouter au panier')}>Ajouter au Panier</button>
+              </div>
+            ))}
+        </div>
+      ) : (
+        <h3>Loading...</h3>
+      )}
     </div>
   );
-}
+};
 
 export default Liste;
