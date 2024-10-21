@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons';
-import { cartAtom } from './atoms/cartAtom';
-import './Layout.css';
+import { cartAtom } from '../atoms/cartAtom';
+import '../styles/Layout.css';
 
 const Layout = ({ children }) => {
   const [cart] = useAtom(cartAtom);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Liste.css';
+import '../styles/Liste.css';
 import { useAtom } from 'jotai';
-import { cartAtom } from './atoms/cartAtom';
+import { cartAtom } from '../atoms/cartAtom';
 
 const Liste = () => {
   const [products, setProducts] = useState([]);

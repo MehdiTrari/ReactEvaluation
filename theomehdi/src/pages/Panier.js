@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { cartAtom } from './atoms/cartAtom'; // Importer l'atom du panier
-import './Panier.css'; // Fichier CSS pour styliser la page
+import { cartAtom } from '../atoms/cartAtom'; // Importer l'atom du panier
+import '../styles/Panier.css'; // Fichier CSS pour styliser la page
 
 const Panier = () => {
   const [cart, setCart] = useAtom(cartAtom); // Récupère les produits du panier

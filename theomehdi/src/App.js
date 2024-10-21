@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Liste from './Liste';
-import Detail from './Detail';
-import Panier from './Panier';
-import Layout from './Layout'; // Importer le Layout
+import Liste from './pages/Liste';
+import Detail from './pages/Detail';
+import Panier from './pages/Panier';
+import Layout from './components/Layout'; // Importer le Layout
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { cartAtom } from './atoms/cartAtom'; // Importer l'atom du panier
-import './Detail.css'; // Importer le fichier CSS
+import { cartAtom } from '../atoms/cartAtom';
+import '../styles/Detail.css'; // Importer le fichier CSS
 
 function Detail() {
   const { id } = useParams(); // Récupère l'ID du produit depuis l'URL
