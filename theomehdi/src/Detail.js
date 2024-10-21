@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { cartAtom } from './atoms/cartAtom'; // Importer l'atom du panier
 import './Detail.css'; // Importer le fichier CSS
 
 function Detail() {
   const { id } = useParams(); // Récupère l'ID du produit depuis l'URL
   const [product, setProduct] = useState(null); // État pour stocker les détails du produit
   const [error, setError] = useState(null); // État pour les erreurs éventuelles
+  const [cart, setCart] = useAtom(cartAtom); // Utiliser l'atom du panier
   const navigate = useNavigate(); // Hook pour naviguer entre les pages
 
   // Fetch les détails du produit quand le composant se charge
@@ -34,8 +37,8 @@ function Detail() {
   }
 
   const handleAddToCart = () => {
+    setCart([...cart, product]); // Ajouter le produit au panier global
     console.log("Produit ajouté au panier :", product);
-    // Logique pour ajouter le produit au panier
   };
 
   const handleGoBack = () => {

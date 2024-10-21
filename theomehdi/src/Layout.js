@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // Importer l'icône de panier
+import { cartAtom } from './atoms/cartAtom'; // Importer l'atom du panier
 import './Layout.css'; // Importer le fichier CSS
 
 const Layout = ({ children }) => {
+  const [cart] = useAtom(cartAtom); // Accéder au panier global
+
   return (
     <div className="layout">
       {/* Header */}
@@ -16,7 +22,10 @@ const Layout = ({ children }) => {
               <Link to="/">Accueil</Link>
             </li>
             <li>
-              <Link to="/panier">Panier</Link>
+              <Link to="/panier" className="cart-link">
+                <FontAwesomeIcon icon={faShoppingCart} /> {/* Icône de panier */}
+                {cart.length > 0 && <span className="cart-notification">{cart.length}</span>}
+              </Link>
             </li>
           </ul>
         </nav>
