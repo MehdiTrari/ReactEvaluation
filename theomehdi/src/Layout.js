@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // Importer l'icône de panier
-import { cartAtom } from './atoms/cartAtom'; // Importer l'atom du panier
-import './Layout.css'; // Importer le fichier CSS
+import { faShoppingCart, faHome } from '@fortawesome/free-solid-svg-icons';
+import { cartAtom } from './atoms/cartAtom';
+import './Layout.css';
 
 const Layout = ({ children }) => {
-  const [cart] = useAtom(cartAtom); // Accéder au panier global
-
-  // Calculer la quantité totale d'articles dans le panier
+  const [cart] = useAtom(cartAtom);
+  
   const totalItemsInCart = cart.reduce((total, product) => total + product.quantity, 0);
 
   return (
@@ -18,11 +17,13 @@ const Layout = ({ children }) => {
       <header>
         <nav className="navbar">
           <Link to="/" className="logo">
-            Chaussures
+            Roubaix Shoes
           </Link>
           <ul>
             <li>
-              <Link to="/">Accueil</Link>
+              <Link to="/">
+                <FontAwesomeIcon icon={faHome} /> {/* Icône de maison pour Accueil */}
+              </Link>
             </li>
             <li>
               <Link to="/panier" className="cart-link">
@@ -41,7 +42,7 @@ const Layout = ({ children }) => {
 
       {/* Footer */}
       <footer>
-        <p>© 2024 - Mon e-commerce de chaussures</p>
+        <p>© Wenov 2024 - Trari Mehdi & Dadon Théo </p>
       </footer>
     </div>
   );
