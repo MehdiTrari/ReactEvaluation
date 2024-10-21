@@ -7,11 +7,25 @@ const Panier = () => {
   const [cart, setCart] = useAtom(cartAtom); // Récupère les produits du panier
 
   // Calculer le montant total
-  const totalAmount = cart.reduce((total, product) => total + product.price, 0);
+  const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
 
   // Fonction pour supprimer un produit du panier
   const removeFromCart = (id) => {
     setCart(cart.filter((product) => product.id !== id));
+  };
+
+  // Fonction pour incrémenter la quantité d'un produit
+  const incrementQuantity = (id) => {
+    setCart(cart.map(item =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    ));
+  };
+
+  // Fonction pour décrémenter la quantité d'un produit
+  const decrementQuantity = (id) => {
+    setCart(cart.map(item =>
+      item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    ));
   };
 
   return (
@@ -25,8 +39,19 @@ const Panier = () => {
                 <img src={`/${product.image}`} alt={product.name} />
                 <div>
                   <h2>{product.name}</h2>
-                  <p>{product.price} €</p>
-                  <button onClick={() => removeFromCart(product.id)}>Supprimer</button>
+                  <p>Prix unitaire : {product.price} €</p>
+                  <p>Total : {(product.price * product.quantity).toFixed(2)} €</p>
+
+                  {/* Gestion des quantités */}
+                  <div className="quantity-controls">
+                    <button onClick={() => decrementQuantity(product.id)}>-</button>
+                    <span>{product.quantity}</span>
+                    <button onClick={() => incrementQuantity(product.id)}>+</button>
+                  </div>
+
+                  <button className="remove-button" onClick={() => removeFromCart(product.id)}>
+                    Supprimer
+                  </button>
                 </div>
               </li>
             ))}

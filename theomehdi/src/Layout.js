@@ -9,6 +9,9 @@ import './Layout.css'; // Importer le fichier CSS
 const Layout = ({ children }) => {
   const [cart] = useAtom(cartAtom); // Accéder au panier global
 
+  // Calculer la quantité totale d'articles dans le panier
+  const totalItemsInCart = cart.reduce((total, product) => total + product.quantity, 0);
+
   return (
     <div className="layout">
       {/* Header */}
@@ -24,7 +27,7 @@ const Layout = ({ children }) => {
             <li>
               <Link to="/panier" className="cart-link">
                 <FontAwesomeIcon icon={faShoppingCart} /> {/* Icône de panier */}
-                {cart.length > 0 && <span className="cart-notification">{cart.length}</span>}
+                {totalItemsInCart > 0 && <span className="cart-notification">{totalItemsInCart}</span>}
               </Link>
             </li>
           </ul>
